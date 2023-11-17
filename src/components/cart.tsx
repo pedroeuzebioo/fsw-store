@@ -1,12 +1,12 @@
 import { ShoppingCartIcon } from "lucide-react";
-import { Badge } from "./badge";
+import { Badge } from "./ui/badge";
 import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computeProductTotalPrice } from "@/helpers/product";
-import { Separator } from "./separator";
-import { ScrollArea } from "./scroll-area";
-import { Button } from "./button";
+import { Separator } from "./ui/separator";
+import { ScrollArea } from "./ui/scroll-area";
+import { Button } from "./ui/button";
 import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 
