@@ -1,7 +1,7 @@
 import { ProductWithTotalPrice } from "@/helpers/product";
 import Image from "next/image";
-import DiscountBadge from "./discount-badge";
 import Link from "next/link";
+import DiscountBadge from "./discount-badge";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;

@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "FSW Store",
   description:
-    "Sistema de e-commerce feito com React, Next.js 13, Next Auth, Tailwind CSS, Shadcn/UI, Prisma, PostgreSQL, Stripe",
+    "Sistema de e-commerce feito com React, Next.js, Next Auth, Tailwind CSS, Shadcn/UI, Prisma, PostgreSQL, Stripe",
 };
 
 export default function RootLayout({

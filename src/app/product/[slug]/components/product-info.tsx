@@ -1,9 +1,9 @@
 "use client";
 
-import DiscountBadge from "@/components/discount-badge";
 import { Button } from "@/components/ui/button";
-import { CartContext } from "@/providers/cart";
+import DiscountBadge from "@/components/discount-badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
+import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 

@@ -18,8 +18,9 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "./ui/sheet";
-import { signIn, useSession, signOut } from "next-auth/react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { Avatar, AvatarImage } from "./ui/avatar";
+import { AvatarFallback } from "@radix-ui/react-avatar";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
 import Cart from "./cart";
@@ -70,12 +71,12 @@ const Header = () => {
             </div>
           )}
 
-          <div className="mt-2 flex flex-col gap-3">
+          <div className="mt-4 flex flex-col gap-2">
             {status === "unauthenticated" && (
               <Button
                 onClick={handleLoginClick}
-                className="w-full justify-start gap-2"
                 variant="outline"
+                className="w-full justify-start gap-2"
               >
                 <LogInIcon size={16} />
                 Fazer Login
@@ -85,20 +86,20 @@ const Header = () => {
             {status === "authenticated" && (
               <Button
                 onClick={handleLogoutClick}
-                className="w-full justify-start gap-2"
                 variant="outline"
+                className="w-full justify-start gap-2"
               >
                 <LogOutIcon size={16} />
                 Fazer Logout
               </Button>
             )}
 
-            <Button className="w-full justify-start gap-2" variant="outline">
+            <Button variant="outline" className="w-full justify-start gap-2">
               <HomeIcon size={16} />
               Início
             </Button>
 
-            <Button className="w-full justify-start gap-2" variant="outline">
+            <Button variant="outline" className="w-full justify-start gap-2">
               <PercentIcon size={16} />
               Ofertas
             </Button>
