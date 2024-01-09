@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/header";
 import { AuthProvider } from "@/providers/auth";
 import Footer from "@/components/footer";
@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "FSW Store",
   description:
-    "Sistema de e-commerce feito com React, Next.js, Next Auth, Tailwind CSS, Shadcn/UI, Prisma, PostgreSQL, Stripe",
+    "Sistema de e-commerce usando a API da Stripe como forma de pagamento",
 };
 
 export default function RootLayout({
