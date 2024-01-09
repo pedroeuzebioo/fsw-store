@@ -9,14 +9,27 @@ import { ScrollArea } from "./ui/scroll-area";
 import { Button } from "./ui/button";
 import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
+import { createOrder } from "@/actions/order";
+import { useSession } from "next-auth/react";
 
 const Cart = () => {
+  const { data } = useSession();
+
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
-    const checkout = await createCheckout(products);
+    if (!data?.user) {
+      // TODO: redirecionar para o login
+      return;
+    }
+
+    const order = await createOrder(products, (data?.user as any).id);
+
+    const checkout = await createCheckout(products, order.id);
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
+    // Criar pedido no banco
 
     stripe?.redirectToCheckout({
       sessionId: checkout.id,
@@ -25,10 +38,7 @@ const Cart = () => {
 
   return (
     <div className="flex h-full flex-col gap-8">
-      <Badge
-        className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem] text-base uppercase"
-        variant="outline"
-      >
+      <Badge variant="heading">
         <ShoppingCartIcon size={16} />
         Carrinho
       </Badge>
@@ -41,7 +51,10 @@ const Cart = () => {
               products.map((product) => (
                 <CartItem
                   key={product.id}
-                  product={computeProductTotalPrice(product as any) as any}
+                  product={{
+                    ...product,
+                    totalPrice: computeProductTotalPrice(product),
+                  }}
                 />
               ))
             ) : (
@@ -57,28 +70,28 @@ const Cart = () => {
         <div className="flex flex-col gap-3">
           <Separator />
 
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs lg:text-sm">
             <p>Subtotal</p>
             <p>R$ {subtotal.toFixed(2)}</p>
           </div>
 
           <Separator />
 
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs lg:text-sm">
             <p>Entrega</p>
             <p>GRÁTIS</p>
           </div>
 
           <Separator />
 
-          <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs lg:text-sm">
             <p>Descontos</p>
             <p>- R$ {totalDiscount.toFixed(2)}</p>
           </div>
 
           <Separator />
 
-          <div className="flex items-center justify-between text-sm font-bold">
+          <div className="flex items-center justify-between text-sm font-bold lg:text-base">
             <p>Total</p>
             <p>R$ {total.toFixed(2)}</p>
           </div>
