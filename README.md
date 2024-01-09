@@ -1,6 +1,6 @@
 # FSW Store
 
-<img src="imagem.png" alt="Exemplo imagem" width="100%">
+<img src=".github/imagem.png" alt="Exemplo imagem" width="100%">
 
 > Sistema de e-commerce usando a Stripe como forma de pagamento e utilizando as tecnologias mais modernas e demandadas pelo mercado.
 
