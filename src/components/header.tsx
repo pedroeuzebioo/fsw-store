@@ -21,7 +21,7 @@ import {
 } from "./ui/sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./ui/avatar";
-import { AvatarFallback } from "@radix-ui/react-avatar";
+import { AvatarFallback } from "./ui/avatar";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
 import Cart from "./cart";
